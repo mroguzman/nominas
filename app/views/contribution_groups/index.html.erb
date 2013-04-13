@@ -1,0 +1,23 @@
+<h1>Listing contribution_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contribution_groups.each do |contribution_group| %>
+  <tr>
+    <td><%= contribution_group.name %></td>
+    <td><%= link_to 'Show', contribution_group %></td>
+    <td><%= link_to 'Edit', edit_contribution_group_path(contribution_group) %></td>
+    <td><%= link_to 'Destroy', contribution_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contribution group', new_contribution_group_path %>

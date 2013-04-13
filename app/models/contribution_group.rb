@@ -1,0 +1,3 @@
+class ContributionGroup < ActiveRecord::Base
+  attr_accessible :name
+end

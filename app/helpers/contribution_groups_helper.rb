@@ -1,0 +1,2 @@
+module ContributionGroupsHelper
+end
