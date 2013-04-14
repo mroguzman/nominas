@@ -5,7 +5,7 @@ Nominas::Application.routes.draw do
   resources :contribution_groups
 
 
-  resources :professional_categories
+  
 
 
   resources :companies

@@ -1,9 +1,8 @@
 class Employee < ActiveRecord::Base
   attr_accessible :name, :nif, :sec_social_number, :company, 
-  	:professional_category, :contribution_group
+  	:contribution_group
 
   belongs_to :company
-  belongs_to :professional_category
   belongs_to :contribution_group
   
   validates :name, presence: true
