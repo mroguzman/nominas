@@ -1,5 +1,7 @@
 class Company < ActiveRecord::Base
   attr_accessible :cif, :name, :sec_social_number, :street
+
+  has_many :employees
   
   validates :cif, presence: true, uniqueness: { case_sensitive: false }, length: { is: 9 }
   validates :name, presence: true
