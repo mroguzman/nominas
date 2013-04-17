@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  salary: 9.99
+  bonus: 9.99
+  overtime: 9.99
+  salary_bonus: 9.99
+  payment_in_kind: 9.99
+  no_bonuses: 9.99
+  social_sec_contribution: 9.99
+  irpf: 9.99
+  start_date: 2013-04-17
+  end_date: 2013-04-17
+
+two:
+  salary: 9.99
+  bonus: 9.99
+  overtime: 9.99
+  salary_bonus: 9.99
+  payment_in_kind: 9.99
+  no_bonuses: 9.99
+  social_sec_contribution: 9.99
+  irpf: 9.99
+  start_date: 2013-04-17
+  end_date: 2013-04-17

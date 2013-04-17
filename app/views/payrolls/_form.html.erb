@@ -1,0 +1,57 @@
+<%= form_for(@payroll) do |f| %>
+  <% if @payroll.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payroll.errors.count, "error") %> prohibited this payroll from being saved:</h2>
+
+      <ul>
+      <% @payroll.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :salary %><br />
+    <%= f.text_field :salary %>
+  </div>
+  <div class="field">
+    <%= f.label :bonus %><br />
+    <%= f.text_field :bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :overtime %><br />
+    <%= f.text_field :overtime %>
+  </div>
+  <div class="field">
+    <%= f.label :salary_bonus %><br />
+    <%= f.text_field :salary_bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_in_kind %><br />
+    <%= f.text_field :payment_in_kind %>
+  </div>
+  <div class="field">
+    <%= f.label :no_bonuses %><br />
+    <%= f.text_field :no_bonuses %>
+  </div>
+  <div class="field">
+    <%= f.label :social_sec_contribution %><br />
+    <%= f.text_field :social_sec_contribution %>
+  </div>
+  <div class="field">
+    <%= f.label :irpf %><br />
+    <%= f.text_field :irpf %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br />
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

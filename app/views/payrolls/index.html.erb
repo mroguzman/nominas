@@ -1,0 +1,41 @@
+<h1>Listing payrolls</h1>
+
+<table>
+  <tr>
+    <th>Salary</th>
+    <th>Bonus</th>
+    <th>Overtime</th>
+    <th>Salary bonus</th>
+    <th>Payment in kind</th>
+    <th>No bonuses</th>
+    <th>Social sec contribution</th>
+    <th>Irpf</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payrolls.each do |payroll| %>
+  <tr>
+    <td><%= payroll.salary %></td>
+    <td><%= payroll.bonus %></td>
+    <td><%= payroll.overtime %></td>
+    <td><%= payroll.salary_bonus %></td>
+    <td><%= payroll.payment_in_kind %></td>
+    <td><%= payroll.no_bonuses %></td>
+    <td><%= payroll.social_sec_contribution %></td>
+    <td><%= payroll.irpf %></td>
+    <td><%= payroll.start_date %></td>
+    <td><%= payroll.end_date %></td>
+    <td><%= link_to 'Show', payroll %></td>
+    <td><%= link_to 'Edit', edit_payroll_path(payroll) %></td>
+    <td><%= link_to 'Destroy', payroll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Payroll', new_payroll_path %>

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Salary:</b>
+  <%= @payroll.salary %>
+</p>
+
+<p>
+  <b>Bonus:</b>
+  <%= @payroll.bonus %>
+</p>
+
+<p>
+  <b>Overtime:</b>
+  <%= @payroll.overtime %>
+</p>
+
+<p>
+  <b>Salary bonus:</b>
+  <%= @payroll.salary_bonus %>
+</p>
+
+<p>
+  <b>Payment in kind:</b>
+  <%= @payroll.payment_in_kind %>
+</p>
+
+<p>
+  <b>No bonuses:</b>
+  <%= @payroll.no_bonuses %>
+</p>
+
+<p>
+  <b>Social sec contribution:</b>
+  <%= @payroll.social_sec_contribution %>
+</p>
+
+<p>
+  <b>Irpf:</b>
+  <%= @payroll.irpf %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @payroll.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @payroll.end_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_payroll_path(@payroll) %> |
+<%= link_to 'Back', payrolls_path %>

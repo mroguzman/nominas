@@ -1,4 +1,7 @@
 Nominas::Application.routes.draw do
+  resources :payrolls
+
+
   resources :employees
 
 
