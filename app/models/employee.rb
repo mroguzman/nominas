@@ -2,6 +2,7 @@ class Employee < ActiveRecord::Base
   attr_accessible :name, :nif, :sec_social_number, :company, 
     :contribution_group
 
+  has_many :payrolls
   belongs_to :company
   belongs_to :contribution_group
   
