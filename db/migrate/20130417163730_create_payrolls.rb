@@ -12,6 +12,9 @@ class CreatePayrolls < ActiveRecord::Migration
       t.date :start_date
       t.date :end_date
 
+     t.foreign_key :employees
+     t.foreign_key :companies 
+
       t.timestamps
     end
   end
