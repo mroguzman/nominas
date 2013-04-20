@@ -5,7 +5,8 @@ class Company < ActiveRecord::Base
   has_many :employees
   has_many :payrolls, through: :employees
   
+  validates :user, presence: true
   validates :cif, presence: true, uniqueness: { case_sensitive: false }, length: { is: 9 }
   validates :name, presence: true
-  validates :sec_social_number, presence: true, numericality: true, length: { is: 10 }
+  validates :sec_social_number, presence: true, numericality: true, length: { is: 10 } 
 end
