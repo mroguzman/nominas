@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   attr_accessible :cif, :name, :sec_social_number, :street
 
+  belongs_to :user
   has_many :employees
   has_many :payrolls, through: :employees
   
