@@ -1,21 +1,13 @@
 Nominas::Application.routes.draw do
-  resources :users
-
-
-  resources :payrolls
-
-
-  resources :employees
-
-
-  resources :contribution_groups
-
-
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  root to: "sessions#index"
   
-
-
+  resources :users
+  resources :payrolls
+  resources :employees
+  resources :contribution_groups
   resources :companies
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -63,10 +55,6 @@ Nominas::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
