@@ -1,4 +1,8 @@
-<%= form_tag do %>
+<% if flash[:alert] %>
+  <p id="notice"><%= flash[:alert] %></p>
+<% end %>
+
+<%= form_tag("/sessions", method: "post") do %>
   <fieldset>
     <legend>Identifícate</legend>
     
@@ -6,7 +10,7 @@
     <%= text_field_tag :email, params[:email] %>
     
     <%= label_tag :password, "Password" %>
-    <%= text_field_tag :password, params[:email] %>
+    <%= password_field_tag :password, params[:password] %>
     
     <%= submit_tag "Login" %>
   </fieldset>
