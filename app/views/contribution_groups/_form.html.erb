@@ -12,8 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :number, "Grupo de Cotizacion" %><br />
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :professional_category, "Categoria Profesional" %><br />
+    <%= f.text_field :professional_category %>
+  </div>
+  <div class="field">
+    <%= f.label :min_base_salary, "Salario Mínimo" %><br />
+    <%= f.text_field :min_base_salary %>
+  </div>
+  <div class="field">
+    <%= f.label :max_base_salary, "Salario Máximo" %><br />
+    <%= f.text_field :max_base_salary %>
   </div>
   <div class="actions">
     <%= f.submit %>
