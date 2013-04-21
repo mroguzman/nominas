@@ -1,5 +1,9 @@
 <% if flash[:alert] %>
-  <p id="notice"><%= flash[:alert] %></p>
+  <p id="alert"><%= flash[:alert] %></p>
+<% end %>
+
+<% if flash[:notice] %>
+  <p id="notice"><%= flash[:notice] %></p>
 <% end %>
 
 <%= form_tag("/sessions", method: "post") do %>
