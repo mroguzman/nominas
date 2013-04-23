@@ -9,7 +9,7 @@ Nominas::Application.routes.draw do
   resources :payrolls
   resources :employees
   resources :contribution_groups
-  resources :companies
+  resources :companies, only: [:new, :create, :edit, :update]
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

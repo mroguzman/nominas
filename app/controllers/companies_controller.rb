@@ -24,11 +24,16 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   # GET /companies/new.json
   def new
-    @company = Company.new
+    user = current_user
+    if user.company
+      redirect_to user.company
+    else
+      @company = Company.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @company }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @company }
+      end
     end
   end
 
@@ -41,6 +46,7 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(params[:company])
+    @company.user = current_user
 
     respond_to do |format|
       if @company.save
