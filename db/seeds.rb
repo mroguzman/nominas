@@ -12,7 +12,7 @@ contribution_group_1 = ContributionGroup.new(number: 1, professional_category: '
 contribution_group_1.id = 1
 contribution_group_1.save!
 
-contribution_group_2 = ContributionGroup.create(number: 2, professional_category: 'Ingenieros Técnicos, Peritos y Ayudantes Titulados', min_base_salary: 872.10, max_base_salary: 3425.70)
+contribution_group_2 = ContributionGroup.new(number: 2, professional_category: 'Ingenieros Técnicos, Peritos y Ayudantes Titulados', min_base_salary: 872.10, max_base_salary: 3425.70)
 contribution_group_2.id = 2
 contribution_group_2.save!
 

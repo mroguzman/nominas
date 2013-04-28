@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130420165012) do
     t.string   "street"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "user_id"
   end
 
   create_table "contribution_groups", :force => true do |t|
@@ -35,8 +36,10 @@ ActiveRecord::Schema.define(:version => 20130420165012) do
     t.string   "name"
     t.string   "nif"
     t.string   "sec_social_number"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.integer  "company_id"
+    t.integer  "contribution_group_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "payrolls", :force => true do |t|
@@ -50,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20130420165012) do
     t.decimal  "irpf"
     t.date     "start_date"
     t.date     "end_date"
+    t.integer  "employee_id"
+    t.integer  "company_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
@@ -60,5 +65,13 @@ ActiveRecord::Schema.define(:version => 20130420165012) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  add_foreign_key "companies", "users", :name => "companies_user_id_fk"
+
+  add_foreign_key "employees", "companies", :name => "employees_company_id_fk"
+  add_foreign_key "employees", "contribution_groups", :name => "employees_contribution_group_id_fk"
+
+  add_foreign_key "payrolls", "companies", :name => "payrolls_company_id_fk"
+  add_foreign_key "payrolls", "employees", :name => "payrolls_employee_id_fk"
 
 end
