@@ -4,9 +4,6 @@
     <!-- start: Meta -->
     <meta charset="utf-8" />
     <title>Nóminas</title>
-    <meta name="description" content="ACME Dashboard Bootstrap Admin Template." />
-    <meta name="author" content="Łukasz Holeczek" />
-    <meta name="keyword" content="ACME, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -46,7 +43,7 @@
               <i class="halflings-icon white user"></i>
               <ul class="dropdown-menu notifications">
                 <li>
-                  <span class="dropdown-menu-title">You have members</span>
+                  <span class="dropdown-menu-title"><%= link_to  "Logout", session_path(current_user.id), method: :delete %></span>
                 </li>
               </ul>
             </li>
@@ -97,4 +94,3 @@
     </div><!--/.fluid-container-->
   </body>
 </html>
-
