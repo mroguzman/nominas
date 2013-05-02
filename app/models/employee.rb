@@ -11,4 +11,6 @@ class Employee < ActiveRecord::Base
   validates :sec_social_number, presence: true, numericality: true, length: { is: 10 }
   validates :company, presence: true
   validates :contribution_group, presence: true
+
+  scope :by_company, ->(company) { where(company_id: company.id) }
 end

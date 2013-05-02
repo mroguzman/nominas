@@ -2,7 +2,11 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    if current_user.company
+      @employees = Employee.by_company(current_user.company)
+    else
+      @employees = []
+    end
 
     respond_to do |format|
       format.html # index.html.erb
