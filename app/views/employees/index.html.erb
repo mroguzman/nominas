@@ -1,10 +1,12 @@
-<h1>Listing employees</h1>
+<h1>Empleados</h1>
 
-<table>
+<table class="table table-striped table-bordered bootstrap-datatable datatable">
   <tr>
-    <th>Name</th>
-    <th>Nif</th>
-    <th>Sec social number</th>
+    <th>Nombre</th>
+    <th>NIF</th>
+    <th>Nº Seg Social</th>
+    <th>Grupo de Cotización</th>
+    <th>Categoría Profesional</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,13 +17,16 @@
     <td><%= employee.name %></td>
     <td><%= employee.nif %></td>
     <td><%= employee.sec_social_number %></td>
-    <td><%= link_to 'Show', employee %></td>
-    <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-    <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= employee.contribution_group.number %></td>
+    <td><%= employee.contribution_group.professional_category %></td>
+    <td><%= link_to "Mostrar", employee %></td>
+    <td><%= link_to "Editar", edit_employee_path(employee) %></td>
+    <td><%= link_to "Eliminar", employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+
 </table>
 
 <br />
 
-<%= link_to 'New Employee', new_employee_path %>
+<%= link_to "Nuevo empleado", new_employee_path %>

@@ -7,4 +7,10 @@ class ContributionGroup < ActiveRecord::Base
   validates :professional_category, presence: true, uniqueness: { case_sensitive: false }
   validates :min_base_salary, presence: true
   validates :max_base_salary, presence: true
+
+	default_scope order(:number)
+
+  def name
+  	"#{number}. #{professional_category}"
+  end
 end

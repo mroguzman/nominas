@@ -23,6 +23,9 @@
     <%= f.label :sec_social_number, "Nº S.Social" %><br />
     <%= f.text_field :sec_social_number %>
   </div>
+  <div class="field">
+    <%= f.select :contribution_group_id, ContributionGroup.all.collect { |c| [c.name, c.id] } %><br />
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

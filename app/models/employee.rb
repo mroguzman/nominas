@@ -1,6 +1,6 @@
 class Employee < ActiveRecord::Base
   attr_accessible :name, :nif, :sec_social_number, :company, 
-    :contribution_group
+    :contribution_group, :contribution_group_id
 
   has_many :payrolls
   belongs_to :company
