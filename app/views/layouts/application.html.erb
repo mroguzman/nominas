@@ -67,16 +67,22 @@
                 <span class="hidden-tablet">Dashboard</span>
               <% end %>
             </li>
+            <li class="<%= active_if_controller(:companies) %>">
+              <%= link_to(show_or_new_company_path(current_user.company)) do %>
+                <i class="fa-icon-briefcase"></i>
+                <span class="hidden-tablet">Empresa</span>
+              <% end %>
+            </li>
             <li class="<%= active_if_controller(:employees) %>">
               <%= link_to(employees_path) do %>
                 <i class="fa-icon-user"></i>
                 <span class="hidden-tablet">Empleados</span>
               <% end %>
             </li>
-            <li class="<%= active_if_controller(:companies) %>">
-              <%= link_to(show_or_new_company_path(current_user.company)) do %>
-                <i class="fa-icon-briefcase"></i>
-                <span class="hidden-tablet">Empresa</span>
+            <li class="<%= active_if_controller(:payrolls) %>">
+              <%= link_to(payrolls_path) do %>
+                <i class="fa-icon-money"></i>
+                <span class="hidden-tablet">Nóminas</span>
               <% end %>
             </li>
           </ul>

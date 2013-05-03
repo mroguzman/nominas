@@ -8,7 +8,9 @@ Nominas::Application.routes.draw do
   
   resources :users
   resources :payrolls
-  resources :employees
+  resources :employees do
+    resources :payrolls
+  end
   resources :contribution_groups
   resources :companies, only: [:show, :new, :create, :edit, :update]
   
