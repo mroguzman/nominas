@@ -4,12 +4,13 @@ Nominas::Application.routes.draw do
   root to: "sessions#new"
   
   resources :sessions, only: [:new, :create, :destroy]
+  resources :dashboard, only: [:index]
   
   resources :users
   resources :payrolls
   resources :employees
   resources :contribution_groups
-  resources :companies, only: [:new, :create, :edit, :update]
+  resources :companies, only: [:show, :new, :create, :edit, :update]
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
