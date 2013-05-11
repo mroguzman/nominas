@@ -1,4 +1,4 @@
-cclass Payroll < ActiveRecord::Base
+class Payroll < ActiveRecord::Base
   attr_accessible :bonus, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary, :salary_bonus,
     :social_sec_contribution, :start_date, :end_date, :company, :employee, :employee_id
 
@@ -11,8 +11,8 @@ cclass Payroll < ActiveRecord::Base
   validates :social_sec_contribution, presence: true
   validates :company, presence: true
   validates :employee, presence: true
-  validates_date :start_date, before: :end_date
-  validates_date :end_date, after: :start_date
+  validates_date :start_date, before: :end_date, presence: true
+  validates_date :end_date, after: :start_date, presence: true
 
   def min_salary
     employee.contribution_group.min_base_salary
