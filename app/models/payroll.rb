@@ -11,8 +11,8 @@ class Payroll < ActiveRecord::Base
   validates :social_sec_contribution, presence: true
   validates :company, presence: true
   validates :employee, presence: true
-  validates_date :start_date, before: :end_date, presence: true
-  validates_date :end_date, after: :start_date, presence: true
+  validates_date :start_date, presence: true, before: :end_date
+  validates_date :end_date, presence: true, after: :start_date
 
   def min_salary
     employee.contribution_group.min_base_salary
