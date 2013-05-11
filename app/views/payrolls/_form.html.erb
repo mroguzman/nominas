@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :employee_id, value: @payroll.employee.id %>
+
   <div class="field">
     <%= f.label :salary, "Salario Base" %><br />
     <%= f.text_field :salary %>
