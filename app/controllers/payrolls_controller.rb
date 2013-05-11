@@ -25,6 +25,7 @@ class PayrollsController < ApplicationController
   # GET /payrolls/new.json
   def new
     @payroll = Payroll.new
+    @payroll.employee = Employee.find_by_id(params[:employee_id])
 
     respond_to do |format|
       format.html # new.html.erb

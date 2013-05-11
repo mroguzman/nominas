@@ -1,4 +1,8 @@
-<h1>Nueva Nomina</h1>
+<% if @payroll.employee %>
+  <h1>Nueva nómina para <%= @payroll.employee.name %></h1>
+<% else %>
+  <h1>Nueva nómina</h1>
+<% end %>
 
 <%= render 'form' %>
 
