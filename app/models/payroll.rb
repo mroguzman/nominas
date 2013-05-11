@@ -1,8 +1,10 @@
 class Payroll < ActiveRecord::Base
   attr_accessible :bonus, :end_date, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary, :salary_bonus,
-  	:social_sec_contribution, :start_date, :company, :employee
+    :social_sec_contribution, :start_date, :company, :employee
 
   belongs_to :employee
+
+  has_one :company, through: :employee
 
   validates :end_date, presence: true
   validates :irpf, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
