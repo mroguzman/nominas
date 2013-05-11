@@ -7,7 +7,7 @@
     <th>Nº Seg Social</th>
     <th>Grupo de Cotización</th>
     <th>Categoría Profesional</th>
-    <th>Nueva Nómina</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -20,7 +20,7 @@
     <td><%= employee.sec_social_number %></td>
     <td><%= employee.contribution_group.number %></td>
     <td><%= employee.contribution_group.professional_category %></td>
-    <td><%= link_to "Nueva", new_employee_payroll_path(employee) %></td>
+    <td><%= link_to "Nueva Nómina", new_employee_payroll_path(employee) %></td>
     <td><%= link_to "Mostrar", employee %></td>
     <td><%= link_to "Editar", edit_employee_path(employee) %></td>
     <td><%= link_to "Eliminar", employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
