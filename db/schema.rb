@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130420165012) do
+ActiveRecord::Schema.define(:version => 20130511170353) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20130420165012) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "employee_id"
-    t.integer  "company_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
@@ -71,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20130420165012) do
   add_foreign_key "employees", "companies", :name => "employees_company_id_fk"
   add_foreign_key "employees", "contribution_groups", :name => "employees_contribution_group_id_fk"
 
-  add_foreign_key "payrolls", "companies", :name => "payrolls_company_id_fk"
   add_foreign_key "payrolls", "employees", :name => "payrolls_employee_id_fk"
 
 end
