@@ -2,7 +2,7 @@ class PayrollsController < ApplicationController
   # GET /payrolls
   # GET /payrolls.json
   def index
-    @payrolls = Payroll.all
+    @payrolls = current_user.payrolls
 
     respond_to do |format|
       format.html # index.html.erb
