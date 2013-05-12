@@ -19,7 +19,7 @@ class Payroll < ActiveRecord::Base
   validate :dates_in_same_month
 
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses,
-    numericality: { greater_than_or_equal_to: 0 }
+    numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
 
   def min_salary
     employee.contribution_group.min_base_salary
