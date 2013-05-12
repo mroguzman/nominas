@@ -16,7 +16,7 @@ class Payroll < ActiveRecord::Base
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates_date :start_date, presence: true, before: :end_date
   validates_date :end_date, presence: true, after: :start_date
-  validate :dates_in_same_month
+  validate :dates_in_same_month_and_year
 
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses,
     numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
@@ -29,22 +29,22 @@ class Payroll < ActiveRecord::Base
     employee.contribution_group.max_base_salary
   end
 
-  def dates_in_same_month
-    if start_date.month != end_date.month
-      errors.add(:end_date, "debe estar definida en el mismo mes que la fecha de inicio")
+  def dates_in_same_month_and_year
+    unless (start_date.month == end_date.month) && (start_date.year == end_date.year)
+      errors.add(:end_date, "debe estar definida en el mismo mes y año que la fecha de inicio")
     end
   end
-  
+
   # Campos calculados
-  
+
   def total_devengado
     [salary, bonus, overtime, salary_bonus, payment_in_kind, no_bonuses].sum
   end
-  
+
   def salario_liquido
     # TODO
   end
-  
+
   def remuneracion_mensual
     salary + bonus
   end
