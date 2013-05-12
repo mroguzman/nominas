@@ -14,7 +14,7 @@
       <th></th>
     </tr>
 
-  <% @payrolls.each do |payroll| %>
+  <% @payrolls.by_year(year).each do |payroll| %>
     <tr>
       <td><%= payroll.employee.name %></td>
       <td><%= payroll.start_date %></td>
