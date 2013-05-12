@@ -31,7 +31,8 @@ class Payroll < ActiveRecord::Base
 
   def number_of_days_less_than_or_equal_maximum
     unless number_of_days.between?(min_number_of_days, max_number_of_days)
-      errors.add(:end_date, "La nómina debe comprender un periodo de entre 1 y 31 días")
+      errors.add(:end_date,
+        "debe definir un periodo de entre #{min_number_of_days} y #{max_number_of_days} días")
     end
   end
 
