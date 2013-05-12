@@ -34,4 +34,21 @@ class Payroll < ActiveRecord::Base
       errors.add(:end_date, "debe estar definida en el mismo mes que la fecha de inicio")
     end
   end
+  
+  # Campos calculados
+  
+  def total_devengado
+    [salary, bonus, overtime, salary_bonus, payment_in_kind, no_bonuses].sum
+  end
+  
+  def salario_liquido
+    # TODO
+  end
+  
+  def remuneracion_mensual
+    salary + bonus
+  end
 end
+
+
+
