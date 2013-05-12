@@ -21,6 +21,8 @@ class Payroll < ActiveRecord::Base
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses,
     numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
 
+  scope :by_year, ->(year) { where("EXTRACT(YEAR FROM start_date) = ?", year.to_s) }
+
   def min_salary
     employee.contribution_group.min_base_salary
   end
@@ -49,6 +51,3 @@ class Payroll < ActiveRecord::Base
     salary + bonus
   end
 end
-
-
-
