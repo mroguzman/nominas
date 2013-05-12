@@ -6,13 +6,17 @@ class Payroll < ActiveRecord::Base
 
   has_one :company, through: :employee
 
-  validates :irpf, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  validates :salary, presence: true, numericality: { greater_than_or_equal_to: :min_salary, less_than_or_equal_to: :max_salary }
-  validates :social_sec_contribution, presence: true
+  validates :salary, presence: true, 
+    numericality: { greater_than_or_equal_to: :min_salary, less_than_or_equal_to: :max_salary }
+  validates :irpf, :social_sec_contribution, presence: true, 
+    numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates :company, presence: true
   validates :employee, presence: true
   validates_date :start_date, presence: true, before: :end_date
   validates_date :end_date, presence: true, after: :start_date
+
+  validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses, 
+    numericality: { greater_than_or_equal_to: 0 }
 
   def min_salary
     employee.contribution_group.min_base_salary
