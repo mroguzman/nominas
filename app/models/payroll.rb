@@ -16,7 +16,7 @@ class Payroll < ActiveRecord::Base
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates_date :start_date, presence: true, before: :end_date
   validates_date :end_date, presence: true, after: :start_date
-  validate :number_of_days_less_than_or_equal_maximum
+  validate :dates_in_same_month
 
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses,
     numericality: { greater_than_or_equal_to: 0 }
@@ -29,22 +29,9 @@ class Payroll < ActiveRecord::Base
     employee.contribution_group.max_base_salary
   end
 
-  def number_of_days_less_than_or_equal_maximum
-    unless number_of_days.between?(min_number_of_days, max_number_of_days)
-      errors.add(:end_date,
-        "debe definir un periodo de entre #{min_number_of_days} y #{max_number_of_days} días")
+  def dates_in_same_month
+    if start_date.month != end_date.month
+      errors.add(:end_date, "debe estar definida en el mismo mes que la fecha de inicio")
     end
-  end
-
-  def number_of_days
-    (end_date - start_date).to_i
-  end
-
-  def min_number_of_days
-    1
-  end
-
-  def max_number_of_days
-    31
   end
 end
