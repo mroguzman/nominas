@@ -42,15 +42,89 @@ class Payroll < ActiveRecord::Base
 
   # Campos calculados
 
+  def salario_bruto
+    if (start_date.month == 'June' || start_date.month == 'December')
+      [salary, bonus, no_bonuses, salary_bonus].sum
+    else
+      [salary, bonus, no_bonuses].sum
+    end
+  end
+
   def total_devengado
-    [salary, bonus, overtime, salary_bonus, payment_in_kind, no_bonuses].sum
+    if (start_date.month == 'June' || start_date.month == 'December')
+      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses, salary_bonus].sum
+    else
+      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses].sum
+    end
+  end
+
+  def iprem
+    0.2 * 532.21
+  end
+
+  def prorrata_paga_extra
+    (payment * salary_bonus) / 12
+  end
+
+  def bcc
+    if (no_bonuses > iprem)
+      [salary, bonus, (no_bonuses - iprem), prorrata_paga_extra].sum
+    else
+      [salary, bonus, prorrata_paga_extra].sum
+    end
+  end 
+
+  def bcp
+    [bcc, overtime, overtime_fm].sum
+  end
+
+  def bhe
+    [overtime, overtime_fm].sum
+  end
+
+  def c_comunes
+    0.047 * bcc
+  end
+
+  def desempleo
+    if (agreement == 'Indefinido')
+      0.0155 * bcp
+    end
+    if (agreement == 'Temporal')
+      0.016 * bcp
+    end
+  end
+
+  def f_profesional
+    0.001 * bcp
+  end
+
+  def horas_extras_normales
+    0.047 * bhe
+  end
+
+  def horas_extras_fuerza_mayor
+    0.02 * bhe
+  end
+
+  def aportacion_sec_social
+    [c_comunes, desempleo, f_profesional, horas_extras_normales, horas_extras_fuerza_mayor].sum
+  end
+
+  def aportacion_irpf
+    irpf * salario_bruto
+  end
+
+  def deducciones
+    aportacion_sec_social - aportacion_irpf
   end
 
   def salario_liquido
-    # TODO
+    salario_bruto - deducciones
   end
 
   def remuneracion_mensual
-    salary + bonus
+    bcc - prorrata_paga_extra
   end
+
 end
