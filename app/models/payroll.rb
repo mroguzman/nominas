@@ -2,7 +2,8 @@
 
 class Payroll < ActiveRecord::Base
   attr_accessible :bonus, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary, :salary_bonus,
-    :social_sec_contribution, :start_date, :end_date, :company, :employee, :employee_id
+    :social_sec_contribution, :start_date, :end_date, :agreement, :payment, :overtime_fm, :company, :employee, 
+    :employee_id
 
   belongs_to :employee
 
@@ -17,8 +18,10 @@ class Payroll < ActiveRecord::Base
   validates_date :start_date, presence: true, before: :end_date
   validates_date :end_date, presence: true, after: :start_date
   validate :dates_in_same_month_and_year
+  validates :agreement, presence: true
+ 
 
-  validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses,
+  validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses, :payment, :overtime_fm,
     numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
 
   scope :by_year, ->(year) { where("EXTRACT(YEAR FROM start_date) = ?", year.to_s) }
