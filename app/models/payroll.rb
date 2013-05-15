@@ -18,7 +18,7 @@ class Payroll < ActiveRecord::Base
   validates_date :start_date, presence: true, before: :end_date
   validates_date :end_date, presence: true, after: :start_date
   validate :dates_in_same_month_and_year
-  validates :agreement, presence: true
+  validates :agreement, presence: true, inclusion: { in: %w(Indefinido Temporal) }
  
 
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses, :payment, :overtime_fm,

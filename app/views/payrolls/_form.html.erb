@@ -14,6 +14,10 @@
   <%= f.hidden_field :employee_id, value: @payroll.employee.id %>
 
   <div class="field">
+    <%= f.label :agreement, "Tipo de Contrato" %><br />
+    <%= f.select :agreement, ['Indefinido', 'Temporal'] %>
+  </div>
+  <div class="field">
     <%= f.label :salary, "Salario Base" %><br />
     <%= f.text_field :salary %>
   </div>
@@ -22,12 +26,20 @@
     <%= f.text_field :bonus %>
   </div>
   <div class="field">
-    <%= f.label :overtime, "Horas Extraordinarias"%><br />
+    <%= f.label :overtime, "Horas Extraordinarias Normales"%><br />
     <%= f.text_field :overtime %>
+  </div>
+  <div class="field">
+    <%= f.label :overtime_fm, "Horas Extraordinarias Fuerza Mayor"%><br />
+    <%= f.text_field :overtime_fm%>
   </div>
   <div class="field">
     <%= f.label :salary_bonus, "Pagas Extras" %><br />
     <%= f.text_field :salary_bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :payment, "Cantidad Pagas Extras" %><br />
+    <%= f.text_field :payment %>
   </div>
   <div class="field">
     <%= f.label :payment_in_kind, "Salario en Especie" %><br />
