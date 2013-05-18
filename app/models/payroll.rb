@@ -123,7 +123,7 @@ class Payroll < ActiveRecord::Base
   end
 
   def aportacion_irpf
-    irpf * salario_bruto
+    (irpf / 100) * salario_bruto
   end
 
   def deducciones
