@@ -19,7 +19,7 @@ class Payroll < ActiveRecord::Base
     numericality: { greater_than_or_equal_to: :min_salary, less_than_or_equal_to: :max_salary }
   validates :irpf, presence: true,
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  validates :agreement, presence: true, inclusion: { in: AGREEMENT_TYPES }
+  validates :agreement, presence: true, inclusion: { in: AGREEMENT_TYPES.map(&:to_s) }
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses, :payment, :overtime_fm,
     numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
   validates_date :start_date, presence: true, before: :end_date
