@@ -2,8 +2,8 @@
 
 class Payroll < ActiveRecord::Base
   attr_accessible :bonus, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary, :salary_bonus,
-    :social_sec_contribution, :start_date, :end_date, :agreement, :payment, :overtime_fm, :company, :employee, 
-    :employee_id
+    :social_sec_contribution, :start_date, :end_date, :agreement, :payment, :overtime_fm, :company,
+    :employee, :employee_id
 
   belongs_to :employee
 
@@ -15,14 +15,13 @@ class Payroll < ActiveRecord::Base
     numericality: { greater_than_or_equal_to: :min_salary, less_than_or_equal_to: :max_salary }
   validates :irpf, :social_sec_contribution, presence: true,
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  validates_date :start_date, presence: true, before: :end_date
-  validates_date :end_date, presence: true, after: :start_date
-  validate :dates_in_same_month_and_year
   validates :agreement, presence: true, inclusion: { in: %w(Indefinido Temporal) }
- 
-
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses, :payment, :overtime_fm,
     numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
+  validates_date :start_date, presence: true, before: :end_date
+  validates_date :end_date, presence: true, after: :start_date
+
+  validate :dates_in_same_month_and_year
 
   scope :by_year, ->(year) { where("EXTRACT(YEAR FROM start_date) = ?", year.to_s) }
 
@@ -43,7 +42,7 @@ class Payroll < ActiveRecord::Base
   # Campos calculados
 
   def salario_bruto
-    if (start_date.month == 'June' || start_date.month == 'December')
+    if start_date.month == 6 || start_date.month == 12
       [salary, bonus, no_bonuses, salary_bonus].sum
     else
       [salary, bonus, no_bonuses].sum
@@ -51,7 +50,7 @@ class Payroll < ActiveRecord::Base
   end
 
   def total_devengado
-    if (start_date.month == 'June' || start_date.month == 'December')
+    if start_date.month == 6 || start_date.month == 12
       [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses, salary_bonus].sum
     else
       [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses].sum
@@ -63,16 +62,16 @@ class Payroll < ActiveRecord::Base
   end
 
   def prorrata_paga_extra
-    (payment * salary_bonus) / 12
+    (payment * salary_bonus) / 12.0
   end
 
   def bcc
-    if (no_bonuses > iprem)
+    if no_bonuses > iprem
       [salary, bonus, (no_bonuses - iprem), prorrata_paga_extra].sum
     else
       [salary, bonus, prorrata_paga_extra].sum
     end
-  end 
+  end
 
   def bcp
     [bcc, overtime, overtime_fm].sum
@@ -87,10 +86,10 @@ class Payroll < ActiveRecord::Base
   end
 
   def desempleo
-    if (agreement == 'Indefinido')
+    case agreement
+    when 'Indefinido'
       0.0155 * bcp
-    end
-    if (agreement == 'Temporal')
+    when 'Temporal'
       0.016 * bcp
     end
   end
@@ -126,5 +125,4 @@ class Payroll < ActiveRecord::Base
   def remuneracion_mensual
     bcc - prorrata_paga_extra
   end
-
 end
