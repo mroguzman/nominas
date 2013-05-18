@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'foreigner'
 
 gem 'validates_timeliness', '~> 3.0'
+gem 'default_value_for'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
