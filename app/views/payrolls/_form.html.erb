@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :agreement, "Tipo de Contrato" %><br />
-    <%= f.select :agreement, ['Indefinido', 'Temporal'] %>
+    <%= f.select :agreement, Payroll::AGREEMENT_TYPES.collect { |type| [type.capitalize, type] } %>
   </div>
   <div class="field">
     <%= f.label :salary, "Salario Base" %><br />

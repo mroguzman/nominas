@@ -1,6 +1,10 @@
 # encoding: UTF-8
 
 class Payroll < ActiveRecord::Base
+  AGREEMENT_INDEFINIDO = :indefinido
+  AGREEMENT_TEMPORAL = :temporal
+  AGREEMENT_TYPES = [AGREEMENT_INDEFINIDO, AGREEMENT_TEMPORAL]
+
   attr_accessible :bonus, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary,
     :salary_bonus, :start_date, :end_date, :agreement, :payment, :overtime_fm,
     :company, :employee, :employee_id
@@ -15,7 +19,7 @@ class Payroll < ActiveRecord::Base
     numericality: { greater_than_or_equal_to: :min_salary, less_than_or_equal_to: :max_salary }
   validates :irpf, presence: true,
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
-  validates :agreement, presence: true, inclusion: { in: %w(Indefinido Temporal) }
+  validates :agreement, presence: true, inclusion: { in: AGREEMENT_TYPES }
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses, :payment, :overtime_fm,
     numericality: { greater_than_or_equal_to: 0 }, allow_blank: true
   validates_date :start_date, presence: true, before: :end_date
@@ -87,9 +91,9 @@ class Payroll < ActiveRecord::Base
 
   def desempleo
     case agreement
-    when 'Indefinido'
+    when AGREEMENT_INDEFINIDO
       0.0155 * bcp
-    when 'Temporal'
+    when AGREEMENT_TEMPORAL
       0.016 * bcp
     end
   end
