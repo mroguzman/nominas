@@ -1,54 +1,144 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Salary:</b>
+  <b>Salario Base:</b>
   <%= @payroll.salary %>
 </p>
 
 <p>
-  <b>Bonus:</b>
+  <b>Complementos Salariales:</b>
   <%= @payroll.bonus %>
 </p>
 
 <p>
-  <b>Overtime:</b>
+  <b>Horas Extras Normales:</b>
   <%= @payroll.overtime %>
 </p>
 
 <p>
-  <b>Salary bonus:</b>
+  <b>Paga Extra:</b>
   <%= @payroll.salary_bonus %>
 </p>
 
 <p>
-  <b>Payment in kind:</b>
+  <b>Salario en Especie:</b>
   <%= @payroll.payment_in_kind %>
 </p>
 
 <p>
-  <b>No bonuses:</b>
+  <b>Complementos no Salariales:</b>
   <%= @payroll.no_bonuses %>
 </p>
 
 <p>
-  <b>Social sec contribution:</b>
-  <%= @payroll.social_sec_contribution %>
-</p>
-
-<p>
-  <b>Irpf:</b>
+  <b>IRPF:</b>
   <%= @payroll.irpf %>
 </p>
 
 <p>
-  <b>Start date:</b>
+  <b>Fecha de Inicio:</b>
   <%= @payroll.start_date %>
 </p>
 
 <p>
-  <b>End date:</b>
+  <b>Fecha de Fin:</b>
   <%= @payroll.end_date %>
 </p>
+
+<p>
+  <b>Tipo de Contrato:</b>
+  <%= @payroll.agreement %>
+</p>
+
+<p>
+  <b>Nº Pagas Extras:</b>
+  <%= @payroll.payment %>
+</p>
+
+<p>
+  <b>Horas Extras Fuerza Mayor:</b>
+  <%= @payroll.overtime_fm %>
+</p>
+
+<p>
+  <b>Salario Bruto:</b>
+  <%= @payroll.salario_bruto %>
+</p>
+
+<p>
+  <b>Total Devengado:</b>
+  <%= @payroll.total_devengado %>
+</p>
+
+<p>
+  <b>IPREM:</b>
+  <%= @payroll.iprem %>
+</p>
+
+<p>
+  <b>Prorrata Paga Extra:</b>
+  <%= @payroll.prorrata_paga_extra %>
+</p>
+
+<p>
+  <b>Base Contigencias Comunes:</b>
+  <%= @payroll.bcc %>
+</p>
+
+<p>
+  <b>Base Contigencias Profesionales:</b>
+  <%= @payroll.bcp %>
+</p>
+
+<p>Base Horas Extras:</b>
+  <%= @payroll.bhe %>
+</p>
+
+<p>
+  <b>Tasa Contigencias Comunes:</b>
+  <%= @payroll.c_comunes %>
+</p>
+
+<p>
+  <b>Tasa Desempleo:</b>
+  <%= @payroll.desempleo %>
+</p>
+
+<p>
+  <b>Tasa Formación Profesional:</b>
+  <%= @payroll.f_profesional %>
+</p>
+
+<p>
+  <b>Tasa Horas Extras Normales:</b>
+  <%= @payroll.horas_extras_normales %>
+</p>
+
+<p>
+  <b>Tasa Horas Extras Fuerza Mayor:</b>
+  <%= @payroll.horas_extras_fuerza_mayor %>
+</p>
+
+<p>
+  <b>Aportación a la S.Social:</b>
+  <%= @payroll.aportacion_sec_social %>
+</p>
+
+<p>
+  <b>Deducciones:</b>
+  <%= @payroll.deducciones %>
+</p>
+
+<p>
+  <b>Salario Líquido:</b>
+  <%= @payroll.salario_liquido %>
+</p>
+
+<p>
+  <b>Remuneración Mensual</b>
+  <%= @payroll.remuneracion_mensual %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_payroll_path(@payroll) %> |
