@@ -98,7 +98,7 @@ class Payroll < ActiveRecord::Base
   end
 
   def desempleo
-    case agreement
+    case agreement.to_sym
     when AGREEMENT_INDEFINIDO
       0.0155 * bcp
     when AGREEMENT_TEMPORAL
