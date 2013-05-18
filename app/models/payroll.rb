@@ -27,6 +27,14 @@ class Payroll < ActiveRecord::Base
 
   validate :dates_in_same_month_and_year
 
+  default_value_for :bonus, 0.0
+  default_value_for :no_bonuses, 0.0
+  default_value_for :overtime, 0.0
+  default_value_for :payment_in_kind, 0.0
+  default_value_for :payment, 0
+  default_value_for :salary_bonus, 0.0
+  default_value_for :overtime_fm, 0.0
+
   scope :by_year, ->(year) { where("EXTRACT(YEAR FROM start_date) = ?", year.to_s) }
 
   def min_salary
@@ -47,17 +55,17 @@ class Payroll < ActiveRecord::Base
 
   def salario_bruto
     if start_date.month == 6 || start_date.month == 12
-      [salary, bonus, no_bonuses, salary_bonus].compact.sum
+      [salary, bonus, no_bonuses, salary_bonus].sum
     else
-      [salary, bonus, no_bonuses].compact.sum
+      [salary, bonus, no_bonuses].sum
     end
   end
 
   def total_devengado
     if start_date.month == 6 || start_date.month == 12
-      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses, salary_bonus].compact.sum
+      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses, salary_bonus].sum
     else
-      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses].compact.sum
+      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses].sum
     end
   end
 
@@ -71,18 +79,18 @@ class Payroll < ActiveRecord::Base
 
   def bcc
     if no_bonuses > iprem
-      [salary, bonus, (no_bonuses - iprem), prorrata_paga_extra].compact.sum
+      [salary, bonus, (no_bonuses - iprem), prorrata_paga_extra].sum
     else
-      [salary, bonus, prorrata_paga_extra].compact.sum
+      [salary, bonus, prorrata_paga_extra].sum
     end
   end
 
   def bcp
-    [bcc, overtime, overtime_fm].compact.sum
+    [bcc, overtime, overtime_fm].sum
   end
 
   def bhe
-    [overtime, overtime_fm].compact.sum
+    [overtime, overtime_fm].sum
   end
 
   def c_comunes
@@ -111,11 +119,11 @@ class Payroll < ActiveRecord::Base
   end
 
   def aportacion_sec_social
-    [c_comunes, desempleo, f_profesional, horas_extras_normales, horas_extras_fuerza_mayor].compact.sum
+    [c_comunes, desempleo, f_profesional, horas_extras_normales, horas_extras_fuerza_mayor].sum
   end
 
   def aportacion_irpf
-    (irpf / 100 ) * salario_bruto
+    irpf * salario_bruto
   end
 
   def deducciones
