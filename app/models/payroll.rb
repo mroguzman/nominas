@@ -2,7 +2,7 @@
 
 class Payroll < ActiveRecord::Base
   attr_accessible :bonus, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary, :salary_bonus,
-    :social_sec_contribution, :start_date, :end_date, :agreement, :payment, :overtime_fm, :company, :employee, 
+    :start_date, :end_date, :agreement, :payment, :overtime_fm, :company, :employee, 
     :employee_id
 
   belongs_to :employee
@@ -13,7 +13,7 @@ class Payroll < ActiveRecord::Base
   validates :employee, presence: true
   validates :salary, presence: true,
     numericality: { greater_than_or_equal_to: :min_salary, less_than_or_equal_to: :max_salary }
-  validates :irpf, :social_sec_contribution, presence: true,
+  validates :irpf, presence: true,
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates_date :start_date, presence: true, before: :end_date
   validates_date :end_date, presence: true, after: :start_date
