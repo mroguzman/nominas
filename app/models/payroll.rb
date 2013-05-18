@@ -27,13 +27,13 @@ class Payroll < ActiveRecord::Base
 
   validate :dates_in_same_month_and_year
 
-  default_value_for :bonus, 0.0
-  default_value_for :no_bonuses, 0.0
-  default_value_for :overtime, 0.0
-  default_value_for :payment_in_kind, 0.0
-  default_value_for :payment, 0
-  default_value_for :salary_bonus, 0.0
-  default_value_for :overtime_fm, 0.0
+  default_value_for :bonus, value: 0.0, allows_nil: false
+  default_value_for :no_bonuses, value: 0.0, allows_nil: false
+  default_value_for :overtime, value: 0.0, allows_nil: false
+  default_value_for :payment_in_kind, value: 0.0, allows_nil: false
+  default_value_for :payment, value: 0, allows_nil: false
+  default_value_for :salary_bonus, value: 0.0, allows_nil: false
+  default_value_for :overtime_fm, value: 0.0, allows_nil: false
 
   scope :by_year, ->(year) { where("EXTRACT(YEAR FROM start_date) = ?", year.to_s) }
 
