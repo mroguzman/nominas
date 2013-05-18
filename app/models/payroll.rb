@@ -1,9 +1,9 @@
 # encoding: UTF-8
 
 class Payroll < ActiveRecord::Base
-  attr_accessible :bonus, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary, :salary_bonus,
-    :social_sec_contribution, :start_date, :end_date, :agreement, :payment, :overtime_fm, :company,
-    :employee, :employee_id
+  attr_accessible :bonus, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary,
+    :salary_bonus, :start_date, :end_date, :agreement, :payment, :overtime_fm,
+    :company, :employee, :employee_id
 
   belongs_to :employee
 
@@ -13,7 +13,7 @@ class Payroll < ActiveRecord::Base
   validates :employee, presence: true
   validates :salary, presence: true,
     numericality: { greater_than_or_equal_to: :min_salary, less_than_or_equal_to: :max_salary }
-  validates :irpf, :social_sec_contribution, presence: true,
+  validates :irpf, presence: true,
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates :agreement, presence: true, inclusion: { in: %w(Indefinido Temporal) }
   validates :bonus, :overtime, :salary_bonus, :payment_in_kind, :no_bonuses, :payment, :overtime_fm,
