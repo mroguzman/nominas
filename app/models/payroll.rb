@@ -127,7 +127,7 @@ class Payroll < ActiveRecord::Base
   end
 
   def deducciones
-    aportacion_sec_social - aportacion_irpf
+    aportacion_sec_social + aportacion_irpf
   end
 
   def salario_liquido
