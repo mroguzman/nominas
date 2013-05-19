@@ -55,9 +55,9 @@ class Payroll < ActiveRecord::Base
 
   def salario_bruto
     if start_date.month == 6 || start_date.month == 12
-      [salary, bonus, no_bonuses, salary_bonus].sum
+      [salary, bonus, no_bonuses, overtime, overtime_fm, salary_bonus].sum
     else
-      [salary, bonus, no_bonuses].sum
+      [salary, bonus, no_bonuses, overtime, overtime_fm].sum
     end
   end
 
@@ -111,11 +111,11 @@ class Payroll < ActiveRecord::Base
   end
 
   def horas_extras_normales
-    0.047 * bhe
+    0.047 * overtime
   end
 
   def horas_extras_fuerza_mayor
-    0.02 * bhe
+    0.02 * overtime_fm
   end
 
   def aportacion_sec_social
