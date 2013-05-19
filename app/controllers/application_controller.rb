@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :authorize
 
   layout :select_layout
-  
+
   protected
 
   def authorize
@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     User.find_by_id(session[:user_id])
+  end
+
+  def current_company
+    current_user.company
   end
 
   private

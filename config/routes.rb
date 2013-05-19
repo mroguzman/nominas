@@ -2,18 +2,17 @@ Nominas::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root to: "sessions#new"
-  
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :dashboard, only: [:index]
-  
-  resources :users
+
+  resources :users, only: [:show, :new, :create]
   resources :payrolls
   resources :employees do
     resources :payrolls
   end
-  resources :contribution_groups
   resources :companies, only: [:show, :new, :create, :edit, :update]
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

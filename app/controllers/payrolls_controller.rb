@@ -13,7 +13,7 @@ class PayrollsController < ApplicationController
   # GET /payrolls/1
   # GET /payrolls/1.json
   def show
-    @payroll = Payroll.find(params[:id])
+    @payroll = current_user.payrolls.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +35,7 @@ class PayrollsController < ApplicationController
 
   # GET /payrolls/1/edit
   def edit
-    @payroll = Payroll.find(params[:id])
+    @payroll = current_user.payrolls.find(params[:id])
   end
 
   # POST /payrolls
@@ -57,7 +57,7 @@ class PayrollsController < ApplicationController
   # PUT /payrolls/1
   # PUT /payrolls/1.json
   def update
-    @payroll = Payroll.find(params[:id])
+    @payroll = current_user.payrolls.find(params[:id])
 
     respond_to do |format|
       if @payroll.update_attributes(params[:payroll])
@@ -73,7 +73,7 @@ class PayrollsController < ApplicationController
   # DELETE /payrolls/1
   # DELETE /payrolls/1.json
   def destroy
-    @payroll = Payroll.find(params[:id])
+    @payroll = current_user.payrolls.find(params[:id])
     @payroll.destroy
 
     respond_to do |format|
