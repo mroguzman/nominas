@@ -33,8 +33,8 @@
         <td><%= @payroll.employee.name %></td>
         <td><%= @payroll.employee.nif %></td>
         <td><%= @payroll.employee.sec_social_number %></td>
-        <td><%= @payroll.employee.contribution_group.name%></td>
-        <td><%= @payroll.employee.contribution_group.name%></td>
+        <td><%= @payroll.employee.contribution_group.professional_category%></td>
+        <td><%= @payroll.employee.contribution_group.number%></td>
      </tr>
    </table><br><br>
 
@@ -49,11 +49,11 @@
         <th>Salario en Especie</th>
       </tr>
       <tr>
-       <td><%= @payroll.salary %></td>
-       <td><%= @payroll.bonus %></td>
-       <td><%= @payroll.bhe %></td>
-       <td><%= @payroll.salary_bonus%></td>
-      <td><%= @payroll.payment_in_kind %></td>
+       <td><%= @payroll.salary %>€</td>
+       <td><%= @payroll.bonus %>€</td>
+       <td><%= @payroll.bhe %>€</td>
+       <td><%= @payroll.salary_bonus%>€</td>
+      <td><%= @payroll.payment_in_kind %>€</td>
       </tr>
     </table><br>
   <h3>2.Percepciones No Salariales</h3>
@@ -65,13 +65,13 @@
         <th>Otras Percepciones no Salariales</th>
       </tr>
       <tr>
-       <td><%= @payroll.indemnification %></td>
-       <td><%= @payroll.indemnification_sec_social %></td>
-       <td><%= @payroll.indemnification_for_transfer %></td>
-       <td><%= @payroll.no_bonuses %></td>
+       <td><%= @payroll.indemnification %>€</td>
+       <td><%= @payroll.indemnification_sec_social %>€</td>
+       <td><%= @payroll.indemnification_for_transfer %>€</td>
+       <td><%= @payroll.no_bonuses %>€</td>
       </tr>
     </table><br>
-  <h2><%= "TOTAL DEVENGADO: #{@payroll.total_devengado}" %></h2><br><br>
+  <h2><%= "TOTAL DEVENGADO: #{@payroll.total_devengado}" %>€</h2><br><br>
 
   <h2>DEDUCCIONES</h2>
     <table class="table table-striped table-bordered bootstrap-datatable datatable">
@@ -84,28 +84,28 @@
         <th>IRPF</th>
       </tr>
       <tr>
-       <td><%= @payroll.c_comunes %></td>
-       <td><%= @payroll.desempleo %></td>
-       <td><%= @payroll.f_profesional %></td>
-       <td><%= @payroll.horas_extras_fuerza_mayor %></td>
-       <td><%= @payroll.horas_extras_normales %></td>
-       <td><%= @payroll.aportacion_irpf %></td>
+       <td><%= @payroll.c_comunes %>€</td>
+       <td><%= @payroll.desempleo %>€</td>
+       <td><%= @payroll.f_profesional %>€</td>
+       <td><%= @payroll.horas_extras_fuerza_mayor %>€</td>
+       <td><%= @payroll.horas_extras_normales %>€</td>
+       <td><%= @payroll.aportacion_irpf %>€</td>
       </tr>
     </table><br>
-    <h2><%= "TOTAL DEDUCCIONES: #{@payroll.deducciones}" %></h2><br><br>
+    <h2><%= "TOTAL DEDUCCIONES: #{@payroll.deducciones}" %>€</h2><br><br>
 
-    <h2><%= "LÍQUIDO TOTAL A PERCIBIR: #{@payroll.salario_liquido}" %></h2><br><br>
+    <h2><%= "LÍQUIDO TOTAL A PERCIBIR: #{@payroll.salario_liquido}" %>€</h2><br><br>
 
     <h2>DETERMINACIÓN DE LAS BASES DE COTIZACIÓN A LA SEGURIDAD SOCIAL Y CONCEPTOS DE RECAUDACIÓN CONJUNTA Y DE LA BASE SUJETA A RETENCIÓN DEL IRPF</h2>
     <ol>
       <li>Base de cotización por contingencias comunes
-        <b><%= "Remuneración mensual: #{@payroll.remuneracion_mensual}" %></b><br>
-        <b><%= "Prorrata de pagas extraordinarias: #{@payroll.prorrata_paga_extra}" %></b><br>
-        <b><%= "TOTAL: #{@payroll.bcc}" %></b><br>
-      <li><%= "Base de cotización por contingecias profesionales: #{@payroll.bcp}" %></li>
-      <li><%= "Base de cotización adicional por horas extraordinarias : #{@payroll.overtime}" %></li>
-      <li><%= "Base de cotización adicional por horas extraordinarias por fuerza mayor: #{@payroll.overtime_fm}" %></li>
-      <li><%= "Base sujeta a retención del IRPF: #{@payroll.total_devengado}" %></li>
+        <b><%= "Remuneración mensual: #{@payroll.remuneracion_mensual}" %>€</b><br>
+        <b><%= "Prorrata de pagas extraordinarias: #{@payroll.prorrata_paga_extra}" %>€</b><br>
+        <b><%= "TOTAL: #{@payroll.bcc}" %>€</b><br>
+      <li><%= "Base de cotización por contingecias profesionales: #{@payroll.bcp}" %>€</li>
+      <li><%= "Base de cotización adicional por horas extraordinarias : #{@payroll.overtime}" %>€</li>
+      <li><%= "Base de cotización adicional por horas extraordinarias por fuerza mayor: #{@payroll.overtime_fm}" %>€</li>
+      <li><%= "Base sujeta a retención del IRPF: #{@payroll.total_devengado}" %>€</li>
     </ol>
 
 

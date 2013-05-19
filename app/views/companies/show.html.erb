@@ -1,24 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @company.name %>
-</p>
-
-<p>
-  <b>Cif:</b>
-  <%= @company.cif %>
-</p>
-
-<p>
-  <b>Sec social number:</b>
-  <%= @company.sec_social_number %>
-</p>
-
-<p>
-  <b>Street:</b>
-  <%= @company.street %>
-</p>
+<h1><%= @company.name %></h1>
+ 
+<h2>CIF: <%= @company.cif %></h2>
+<h2>Nº Seguridad Social: <%= @company.sec_social_number %></h2>
+<h2>Domicilio: <%= @company.street %></h2>
+<h2>Nº de Empleados: <%= @company.employees.count %></h2><br>
 
 
-<%= link_to 'Edit', edit_company_path(@company) %>
+
+
+<%= link_to 'Editar', edit_company_path(@company) %>
