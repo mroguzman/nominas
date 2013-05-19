@@ -54,6 +54,18 @@
     <%= f.text_field :irpf %>
   </div>
   <div class="field">
+    <%= f.label :indemnification, "Indemnizaciones o Suplidos" %><br />
+    <%= f.text_field :indemnification %>
+  </div>
+  <div class="field">
+    <%= f.label :indemnification_sec_social, "Prestaciones e Indemnizacion SS" %><br />
+    <%= f.text_field :indemnification_sec_social %>
+  </div>
+  <div class="field">
+    <%= f.label :indemnification_for_transfer, "Indemnizaciones pro Traslados" %><br />
+    <%= f.text_field :indemnification_for_transfer %>
+  </div>
+  <div class="field">
     <%= f.label :start_date, "Fecha Inicio" %><br />
     <%= f.date_select :start_date %>
   </div>

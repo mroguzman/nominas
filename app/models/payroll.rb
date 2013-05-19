@@ -6,8 +6,8 @@ class Payroll < ActiveRecord::Base
   AGREEMENT_TYPES = [AGREEMENT_INDEFINIDO, AGREEMENT_TEMPORAL]
 
   attr_accessible :bonus, :irpf, :no_bonuses, :overtime, :payment_in_kind, :salary,
-    :salary_bonus, :start_date, :end_date, :agreement, :payment, :overtime_fm,
-    :company, :employee, :employee_id
+    :salary_bonus, :start_date, :end_date, :agreement, :payment, :overtime_fm, :indemnification,
+    :indemnification_sec_social, :indemnification_for_transfer, :company, :employee, :employee_id
 
   belongs_to :employee
 
@@ -34,6 +34,9 @@ class Payroll < ActiveRecord::Base
   default_value_for :payment, value: 0, allows_nil: false
   default_value_for :salary_bonus, value: 0.0, allows_nil: false
   default_value_for :overtime_fm, value: 0.0, allows_nil: false
+  default_value_for :indemnification, value: 0.0, allows_nil: false
+  default_value_for :indemnification_sec_social, value: 0.0, allows_nil: false
+  default_value_for :indemnification_for_transfer, value: 0.0, allows_nil: false
 
   scope :by_year, ->(year) { where("EXTRACT(YEAR FROM start_date) = ?", year.to_s) }
 
@@ -63,9 +66,9 @@ class Payroll < ActiveRecord::Base
 
   def total_devengado
     if start_date.month == 6 || start_date.month == 12
-      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses, salary_bonus].sum
+      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses, salary_bonus, indemnification, indemnification_sec_social, indemnification_for_transfer].sum
     else
-      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses].sum
+      [salary, bonus, overtime, overtime_fm, payment_in_kind, no_bonuses, indemnification, indemnification_sec_social, indemnification_for_transfer].sum
     end
   end
 
