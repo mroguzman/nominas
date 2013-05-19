@@ -20,7 +20,7 @@
       <td><%= payroll.start_date %></td>
       <td><%= payroll.end_date %></td>
       <td><%= link_to 'Mostrar', payroll %></td>
-      <td><%= link_to 'Edita', edit_payroll_path(payroll) %></td>
+      <td><%= link_to 'Editar', edit_payroll_path(payroll) %></td>
       <td><%= link_to 'Eliminar', payroll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
