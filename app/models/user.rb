@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def name
-    [company.try(:name), email].join(" | ")
+    [company.try(:name), email].compact.join(" | ")
   end
 end

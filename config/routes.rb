@@ -6,7 +6,7 @@ Nominas::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :dashboard, only: [:index]
 
-  resources :users
+  resources :users, only: [:show, :new, :create]
   resources :payrolls
   resources :employees do
     resources :payrolls
