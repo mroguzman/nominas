@@ -19,14 +19,10 @@
       <td><%= payroll.employee.name %></td>
       <td><%= payroll.start_date %></td>
       <td><%= payroll.end_date %></td>
-      <td><%= link_to 'Show', payroll %></td>
-      <td><%= link_to 'Edit', edit_payroll_path(payroll) %></td>
-      <td><%= link_to 'Destroy', payroll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Mostrar', payroll %></td>
+      <td><%= link_to 'Edita', edit_payroll_path(payroll) %></td>
+      <td><%= link_to 'Eliminar', payroll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </table>
 <% end %>
-
-<br />
-
-<%= link_to 'New Payroll', new_payroll_path %>
