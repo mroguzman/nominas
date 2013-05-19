@@ -3,6 +3,9 @@
 class SessionsController < ApplicationController
   skip_before_filter :authorize
 
+  def login
+  end
+
   def new
     redirect_to_new_company_or_dashboard if current_user
   end
@@ -13,7 +16,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to_new_company_or_dashboard
     else
-      redirect_to root_url, alert: "Usuario o password inválidos"
+      redirect_to root_url, alert: "Usuario o contraseña inválidos"
     end
   end
 
@@ -29,6 +32,6 @@ class SessionsController < ApplicationController
       redirect_to dashboard_index_url
     else
       redirect_to new_company_url, notice: "Crea tu empresa"
-    end 
+    end
   end
 end
