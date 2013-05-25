@@ -10,8 +10,6 @@
       <th>Fecha de inicio</th>
       <th>Fecha de fin</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
 
   <% @payrolls.by_year(year).each do |payroll| %>
@@ -19,9 +17,19 @@
       <td><%= payroll.employee.name %></td>
       <td><%= payroll.start_date %></td>
       <td><%= payroll.end_date %></td>
-      <td><%= link_to 'Mostrar', payroll %></td>
-      <td><%= link_to 'Editar', edit_payroll_path(payroll) %></td>
-      <td><%= link_to 'Eliminar', payroll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <div class="btn-group">
+          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            Acciones
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Mostrar', payroll %></li>
+            <li><%= link_to 'Editar', edit_payroll_path(payroll) %></li>
+            <li><%= link_to 'Eliminar', payroll, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+        </div>
+      </td>
     </tr>
   <% end %>
   </table>

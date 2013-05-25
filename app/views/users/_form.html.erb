@@ -1,30 +1,51 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<style type="text/css">
+  body { background: url('/assets/bg-login.jpg') !important; }
+</style>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div class="row-fluid">
+  <div class="login-box">
+    <div class="icons">
+      <a href="index.html"><i class="halflings-icon home"></i></a>
+      <a href="#"><i class="halflings-icon cog"></i></a>
     </div>
-  <% end %>
+    <h2>Crear Cuenta</h2>
 
-  <div class="field">
-    <%= f.label :email, "Email" %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password, "Contraseña" %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmar Contraseña" %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <fieldset> 
+      <div class="input-prepend" title="Email">
+        <span class="add-on"><i class="halflings-icon user"></i></span>
+        <input class="input-large span10" name="email" id="email" type="text" placeholder="Email" />
+      </div>
+      <div class="clearfix"></div>
+      <div class="input-prepend" title="Email">
+        <span class="add-on"><i class="halflings-icon user"></i></span>
+        <input class="input-large span10" name="password" id="password" type="text" placeholder="Contraseña" />
+      </div>
+      <div class="clearfix"></div>
+      <div class="input-prepend" title="Email">
+        <span class="add-on"><i class="halflings-icon user"></i></span>
+        <input class="input-large span10" name="password_confirmation" id="password_confirmation" type="text" placeholder="Confirmar Contraseña" />
+      </div>
+      <div class="clearfix"></div>
   
-  <div class="actions">
-    <%= f.submit %>
+    <div class="button-login">
+     <button class="btn btn-primary btn-large">
+      <%= f.submit %></button>
+    </div>
+    <div class="clearfix"></div>
+  </fieldset>
+  <% end %>
   </div>
-<% end %>
+</div>
