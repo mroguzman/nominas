@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :authorize, only: [:new, :create]
-  
+
   # GET /users
   # GET /users.json
   def index
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       if @user.save
         # format.html { redirect_to @user, notice: 'User was successfully created.' }
         # format.json { render json: @user, status: :created, location: @user }
-        format.html { redirect_to root_url(email: @user.email), notice: "Usuario #{@user.email} creado correctamente." }
+        format.html { redirect_to new_session_url(email: @user.email), notice: "Usuario #{@user.email} creado correctamente." }
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -85,4 +85,3 @@ class UsersController < ApplicationController
   end
 end
 
- 
