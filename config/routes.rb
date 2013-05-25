@@ -3,7 +3,7 @@ Nominas::Application.routes.draw do
   # just remember to delete public/index.html.
   root to: "sessions#landing"
 
-  resources :sessions, only: [:new, :create, :destroy, :login]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :dashboard, only: [:index]
 
   resources :users, only: [:show, :new, :create]

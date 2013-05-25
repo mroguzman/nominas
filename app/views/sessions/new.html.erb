@@ -1,21 +1,42 @@
-<% if flash[:alert] %>
-  <p id="alert"><%= flash[:alert] %></p>
-<% end %>
+<style type="text/css">
+  body { background: url('/assets/bg-login.jpg') !important; }
+</style>
 
-<% if flash[:notice] %>
-  <p id="notice"><%= flash[:notice] %></p>
-<% end %>
+<div class="row-fluid">
+  <div class="login-box">
+    <div class="icons">
+      <a href="index.html"><i class="halflings-icon home"></i></a>
+      <a href="#"><i class="halflings-icon cog"></i></a>
+    </div>
+    <h2>Introduce tus datos de acceso</h2>
+    <form class="form-horizontal" action="/sessions" method="post" />
+      <fieldset>
+        <div class="input-prepend" title="Email">
+          <span class="add-on"><i class="halflings-icon user"></i></span>
+          <input class="input-large span10" name="email" id="email" type="text" placeholder="email" />
+        </div>
+        <div class="clearfix"></div>
 
-<%= form_tag("/sessions", method: "post") do %>
-  <fieldset>
-    <legend>Identifícate</legend>
-    
-    <%= label_tag :email, "Email" %>
-    <%= text_field_tag :email, params[:email] %>
-    
-    <%= label_tag :password, "Contraseña" %>
-    <%= password_field_tag :password, params[:password] %>
-    
-    <%= submit_tag "Login" %>
-  </fieldset>
-<% end %>
+        <div class="input-prepend" title="Contraseña">
+          <span class="add-on"><i class="halflings-icon lock"></i></span>
+          <input class="input-large span10" name="password" id="password" type="password" placeholder="contraseña" />
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="button-login">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        <div class="clearfix"></div>
+    </form>
+
+    <% if flash[:alert] %>
+      <p id="alert"><%= flash[:alert] %></p>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <p id="notice"><%= flash[:notice] %></p>
+    <% end %>
+
+    <hr />
+    </fieldset></div>
+</div>

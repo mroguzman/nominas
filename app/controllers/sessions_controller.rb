@@ -4,10 +4,6 @@ class SessionsController < ApplicationController
   skip_before_filter :authorize
 
   def landing
-    
-  end
-
-  def login
     redirect_to_new_company_or_dashboard if current_user
   end
 

@@ -1,26 +1,29 @@
 <style type="text/css">
   body { background: url('/assets/bg-login.jpg') !important; }
 </style>
- <h1>EnNómina</h1> 
 
-<p><i class="icon-align-center"></i>
-  <a class="btn btn-large" href="sessions/login">Login</a>
+ <h1>EnNómina</h1>
+
+<p>
+  <i class="icon-align-center"></i>
+  <a class="btn btn-large" href="sessions/new">Login</a>
   <a class="btn btn-large" href="users/new">Registrar</a>
-</p>  
-  
+</p>
+
 <p>
   <i class="fa-icon-facebook-sign"></i> Facebook
 </p>
+
 <p>
   <i class="fa-icon-twitter-sign"></i> Twitter
 </p>
 
-    <% if flash[:alert] %>
-      <p id="alert"><%= flash[:alert] %></p>
-    <% end %>
+<% if flash[:alert] %>
+  <p id="alert"><%= flash[:alert] %></p>
+<% end %>
 
-    <% if flash[:notice] %>
-      <p id="notice"><%= flash[:notice] %></p>
-    <% end %>
+<% if flash[:notice] %>
+  <p id="notice"><%= flash[:notice] %></p>
+<% end %>
 
 </div>
