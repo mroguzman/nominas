@@ -8,9 +8,6 @@
     <th>Grupo de Cotización</th>
     <th>Categoría Profesional</th>
     <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @employees.each do |employee| %>
@@ -20,10 +17,20 @@
     <td><%= employee.sec_social_number %></td>
     <td><%= employee.contribution_group.number %></td>
     <td><%= employee.contribution_group.professional_category %></td>
-    <td><%= link_to "Nueva Nómina", new_employee_payroll_path(employee) %></td>
-    <td><%= link_to "Mostrar", employee %></td>
-    <td><%= link_to "Editar", edit_employee_path(employee) %></td>
-    <td><%= link_to "Eliminar", employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+          Acciones
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Nueva Nómina", new_employee_payroll_path(employee) %></li>
+          <li><%= link_to "Mostrar", employee %></li>
+          <li><%= link_to "Editar", edit_employee_path(employee) %></li>
+          <li><%= link_to "Eliminar", employee, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        </ul>
+      </div>
+    </td>
   </tr>
 <% end %>
 
@@ -31,4 +38,4 @@
 
 <br />
 
-<%= link_to "Nuevo empleado", new_employee_path %>
+<%= link_to "Nuevo empleado", new_employee_path, class: "btn" %>
