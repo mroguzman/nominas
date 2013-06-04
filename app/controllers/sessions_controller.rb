@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to_new_company_or_dashboard
     else
-      redirect_to root_url, alert: "Usuario o contraseña inválidos"
+      redirect_to new_session_url(email: params[:email]), alert: "Usuario o contraseña inválidos"
     end
   end
 
