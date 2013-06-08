@@ -19,7 +19,7 @@ th, td {
 }
 
 .payroll h1 {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 1.6em;
   line-height: 1.2em;
   margin-bottom: 1.2em;
@@ -77,5 +77,5 @@ th, td {
 
 .payroll .payroll-cotizacion {
   font-size: 0.8em;
-  margin-bottom: -1.0em;
+  margin-bottom: -3.0em;
 }
