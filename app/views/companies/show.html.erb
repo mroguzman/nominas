@@ -2,12 +2,19 @@
 
 <h1><%= @company.name %></h1>
  
-<h2>CIF: <%= @company.cif %></h2>
-<h2>Nº Seguridad Social: <%= @company.sec_social_number %></h2>
-<h2>Domicilio: <%= @company.street %></h2>
-<h2>Nº de Empleados: <%= @company.employees.count %></h2><br>
-
-
-
+<table class="table table-striped table-bordered bootstrap-datatable datatable">
+  <tr>
+    <th>CIF</th>
+    <th>Nº Seguridad Social</th>
+    <th>Domicilio</th>
+    <th>Nº Empleados</th>
+  </tr>
+  <tr>
+    <td><%= @company.cif %></td>
+    <td><%= @company.sec_social_number %></td>
+    <td><%= @company.street %></td>
+    <td><%= @company.employees.count %></td><br>
+  </tr>
+</table>
 
 <%= link_to 'Editar', edit_company_path(@company), class: "btn" %>
