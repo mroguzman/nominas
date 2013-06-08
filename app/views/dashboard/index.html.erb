@@ -1,14 +1,14 @@
-<h1>Hola</h1>
+<h1>Información para la la Empresa <%= current_user.company.name %></h1>
 
 <table class="table table-striped table-bordered bootstrap-datatable datatable">
   <tr>
     <th>Fecha Ingreso</th>
-    <th>Nº Trabajadores</th>
+    <th>Nº Empleados</th>
     <th>Nº Nóminas</th>
   </tr>
   <tr>
-    <td><%=  %></td>
-    <td><%=  %></td>
-    <td><%=  %></td>
+    <td><%= current_user.company.created_at %></td>
+    <td><%= current_user.company.employees.count %></td>
+    <td><%= current_user.company.payrolls.count %></td>
   </tr>
 </table>
