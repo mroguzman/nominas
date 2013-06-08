@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   def name
     [company.try(:name), email].compact.join(" | ")
   end
+
+  #def fecha_ingreso
+  #  created_at.strftime("%d %b %Y")
+  #end
 end
