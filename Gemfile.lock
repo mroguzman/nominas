@@ -57,6 +57,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.22)
     multi_json (1.7.2)
+    pdfkit (0.5.3)
     pg (0.15.1)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -120,6 +121,7 @@ DEPENDENCIES
   default_value_for
   foreigner
   jquery-rails
+  pdfkit
   pg
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)

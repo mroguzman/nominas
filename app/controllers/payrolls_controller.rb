@@ -18,6 +18,15 @@ class PayrollsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @payroll }
+      format.pdf do
+        html = render_to_string(layout: false, action: "show_pdf", formats: :html)
+
+        kit = PDFKit.new(html)
+        kit.stylesheets << payroll_pdf_css
+
+        send_data(kit.to_pdf, filename: "nomina_#{@payroll.id}.pdf",
+          type: "application/pdf", disposition: "inline")
+      end
     end
   end
 
@@ -80,5 +89,11 @@ class PayrollsController < ApplicationController
       format.html { redirect_to payrolls_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def payroll_pdf_css
+    Rails.root.join("public", "payrolls_pdf.css")
   end
 end
