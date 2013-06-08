@@ -54,7 +54,7 @@
         <th>Salario en Especie</th>
       </tr>
       <tr>
-       <td><%= number_to_euros(@payroll.salary) %></td> 
+       <td><%= number_to_euros(@payroll.salary) %></td>
        <td><%= number_to_euros(@payroll.bonus) %></td>
        <td><%= number_to_euros(@payroll.bhe) %></td>
        <td><%= number_to_euros(@payroll.salary_bonus) %></td>
@@ -72,14 +72,13 @@
       <tr>
        <td><%= number_to_euros(@payroll.indemnification) %></td>
        <td><%= number_to_euros(@payroll.indemnification_sec_social) %></td>
-       <td><%= number_to_euros(@payroll.indemnification_for_transfer )%></td>
+       <td><%= number_to_euros(@payroll.indemnification_for_transfer) %></td>
        <td><%= number_to_euros(@payroll.no_bonuses) %></td>
       </tr>
     </table>
     <h2 class="total">
       Total devengado:
       <span class="quantity"><%= number_to_euros(@payroll.total_devengado) %></span>
-      <span class="currency"></span>
     </h2>
   </div>
 
@@ -106,13 +105,11 @@
     <h2 class="total">
       Total deducciones:
       <span class="quantity"><%= number_to_euros(@payroll.deducciones) %></span>
-      <span class="currency"></span>
     </h2>
 
     <h2 class="total">
       Líquido total a percibir:
       <span class="quantity"><%= number_to_euros(@payroll.salario_liquido) %></span>
-      <span class="currency"></span>
     </h2>
   </div>
 
