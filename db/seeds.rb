@@ -35,4 +35,3 @@ contribution_group_6.save!
 contribution_group_7 = ContributionGroup.new(number: 7, professional_category: 'Auxiliares Administrativos', min_base_salary: 753.00, max_base_salary: 3425.70)
 contribution_group_7.id = 7
 contribution_group_7.save!
-contribution_group_7.save!
