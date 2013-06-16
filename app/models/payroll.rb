@@ -26,6 +26,7 @@ class Payroll < ActiveRecord::Base
   validates_date :end_date, presence: true, after: :start_date
 
   validate :dates_in_same_month_and_year
+  validate :dates_not_overlap_with_other_payrolls
 
   default_value_for :bonus, value: 0.0, allows_nil: false
   default_value_for :no_bonuses, value: 0.0, allows_nil: false
@@ -50,8 +51,20 @@ class Payroll < ActiveRecord::Base
 
   def dates_in_same_month_and_year
     unless (start_date.month == end_date.month) && (start_date.year == end_date.year)
-      errors.add(:end_date, "debe estar definida en el mismo mes y año que la fecha de inicio")
+      errors[:base] << "La fecha de inicio y de fin deben estar definidas en el mismo mes y año"
     end
+  end
+
+  def dates_not_overlap_with_other_payrolls
+    employee.payrolls.each do |payroll|
+      if dates_overlap_with_other_payroll? payroll
+        errors[:base] << "Has asignado un rango de fechas en las que existe otra nómina para este empleado"
+      end
+    end
+  end
+
+  def dates_overlap_with_other_payroll?(payroll)
+    (start_date <= payroll.end_date) && (end_date >= payroll.start_date)
   end
 
   # Campos calculados
